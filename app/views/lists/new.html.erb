@@ -1,0 +1,170 @@
+
+<% if @company.errors.any? %>
+  <%= @company.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @company.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= @company.company_name %> - 編集</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+</head>
+<body>
+  <div>
+  <%= flash[:notice] %>
+</div>
+  <div class="container mt-5">
+    <div class="card">
+      <div class="card-header bg-light">
+        <h1 class="h3">
+          <i class="fas fa-edit"></i> <!-- Add icon -->
+          <%= @company.company_name %> - 追加
+        </h1>
+      </div>
+      <div class="card-body">
+        <%= form_with model: @company,url:"/lists/#{@company.id}", method: :post do |f| %>
+          <div class="form-group">
+            <%= f.label :company_code, "企業コード" %>
+            <%= f.text_field :company_code, class: "form-control" %>
+            <% if @company.errors.include?(:company_code) %>
+              <small class="form-text text-danger"><%= @company.errors[:company_code].join(", ") %></small>
+            <% end %>
+          </div>
+          <div class="form-group">
+  <%= f.label :listing_status, "上場状況" %>
+  <%= f.text_field :listing_status, class: "form-control" %>
+  <% if @company.errors.include?(:listing_status) %>
+    <small class="form-text text-danger"><%= @company.errors[:listing_status].join(", ") %></small>
+  <% end %>
+</div>
+
+<div class="form-group">
+  <%= f.label :company_name, "企業名" %>
+  <%= f.text_field :company_name, class: "form-control" %>
+  <% if @company.errors.include?(:company_name) %>
+    <small class="form-text text-danger"><%= @company.errors[:company_name].join(", ") %></small>
+  <% end %>
+</div>
+
+<div class="form-group">
+  <%= f.label :company_name_kana, "企業名（カナ）" %>
+  <%= f.text_field :company_name_kana, class: "form-control" %>
+  <% if @company.errors.include?(:company_name_kana) %>
+    <small class="form-text text-danger"><%= @company.errors[:company_name_kana].join(", ") %></small>
+  <% end %>
+</div>
+
+<div class="form-group">
+  <%= f.label :mail_address, "メールアドレス" %>
+  <%= f.text_field :mail_address, class: "form-control" %>
+  <% if @company.errors.include?(:mail_address) %>
+    <small class="form-text text-danger"><%= @company.errors[:mail_address].join(", ") %></small>
+  <% end %>
+</div>
+
+<div class="form-group">
+  <%= f.label :address, "住所" %>
+  <%= f.text_field :address, class: "form-control" %>
+  <% if @company.errors.include?(:address) %>
+    <small class="form-text text-danger"><%= @company.errors[:address].join(", ") %></small>
+  <% end %>
+</div>
+
+<div class="form-group">
+  <%= f.label :representative, "代表者" %>
+  <%= f.text_field :representative, class: "form-control" %>
+  <% if @company.errors.include?(:representative) %>
+    <small class="form-text text-danger"><%= @company.errors[:representative].join(", ") %></small>
+  <% end %>
+</div>
+
+<div class="form-group">
+  <%= f.label :representative_kana, "代表者（カナ）" %>
+  <%= f.text_field :representative_kana, class: "form-control" %>
+  <% if @company.errors.include?(:representative_kana) %>
+    <small class="form-text text-danger"><%= @company.errors[:representative_kana].join(", ") %></small>
+  <% end %>
+</div>
+
+<div class="form-group">
+  <%= f.label :phone_nubmer, "電話番号" %>
+  <%= f.text_field :phone_nubmer, class: "form-control" %>
+  <% if @company.errors.include?(:phone_nubmer) %>
+    <small class="form-text text-danger"><%= @company.errors[:phone_nubmer].join(", ") %></small>
+  <% end %>
+</div>
+
+<div class="form-group">
+  <%= f.label :earnings_2022, "2022年度売上" %>
+  <%= f.text_field :earnings_2022, class: "form-control" %>
+  <% if @company.errors.include?(:earnings_2022) %>
+    <small class="form-text text-danger"><%= @company.errors[:earnings_2022].join(", ") %></small>
+  <% end %>
+</div>
+
+<div class="form-group">
+  <%= f.label :profit_2022, "2022年度利益" %>
+  <%= f.text_field :profit_2022, class: "form-control" %>
+  <% if @company.errors.include?(:profit_2022) %>
+    <small class="form-text text-danger"><%= @company.errors[:profit_2022].join(", ") %></small>
+  <% end %>
+</div>
+
+<div class="form-group">
+  <%= f.label :earnings_2021, "2021年度売上" %>
+  <%= f.text_field :earnings_2021, class: "form-control" %>
+  <% if @company.errors.include?(:earnings_2021) %>
+    <small class="form-text text-danger"><%= @company.errors[:earnings_2021].join(", ") %></small>
+  <% end %>
+</div>
+
+<div class="form-group">
+  <%= f.label :profit_2021, "2021年度利益" %>
+  <%= f.text_field :profit_2021, class: "form-control" %>
+  <% if @company.errors.include?(:profit_2021) %>
+    <small class="form-text text-danger"><%= @company.errors[:profit_2021].join(", ") %></small>
+  <% end %>
+</div>
+
+<div class="form-group">
+  <%= f.label :earnings_2020, "2020年度売上" %>
+  <%= f.text_field :earnings_2020, class: "form-control" %>
+  <% if @company.errors.include?(:earnings_2020) %>
+    <small class="form-text text-danger"><%= @company.errors[:earnings_2020].join(", ") %></small>
+  <% end %>
+</div>
+
+<div class="form-group">
+  <%= f.label :profit_2020, "2020年度利益" %>
+  <%= f.text_field :profit_2020, class: "form-control" %>
+  <% if @company.errors.include?(:profit_2020) %>
+    <small class="form-text text-danger"><%= @company.errors[:profit_2020].join(", ") %></small>
+  <% end %>
+</div>
+
+
+
+          <div class="form-group">
+            <%= f.submit "更新", class: "btn btn-primary mr-2" %>
+            <%= link_to "戻る", lists_path, class: 'btn btn-secondary' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

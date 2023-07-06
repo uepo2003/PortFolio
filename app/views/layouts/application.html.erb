@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Plex</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <%= link_to "Plex", lists_path, class: "navbar-brand"  %>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "企業追加", new_list_path, class: 'nav-link' %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "新規登録", new_user_registration_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログイン", new_user_session_path, class: 'nav-link' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+       <% if user_signed_in? %>
+     <%= form_with url: search_path, method: :get, local: true, class: 'form-inline my-2 my-lg-0' do |f| %>
+  <%= f.select :search_type, options_for_select(['AND', 'OR']), class: 'form-control mr-sm-2' %>
+
+  <%= f.select :field1, options_for_select([
+    ['企業コード', 'company_code'],
+    ['上場状況', 'listing_status'],
+    ['企業名', 'company_name'],
+    ['企業名（カナ）', 'company_name_kana'],
+    ['郵便番号', 'mail_address'],
+    ['所在地', 'address'],
+    ['代表者名', 'representative'],
+    ['代表者名（カナ）', 'representative_kana'],
+    ['電話番号', 'phone_nubmer'],
+    ['売上（2022）', 'earnings_2022'],
+    ['利益（2022）', 'profit_2022'],
+    ['売上（2021）', 'earnings_2021'],
+    ['利益（2021）', 'profit_2021'],
+    ['売上（2020）', 'earnings_2020'],
+    ['利益（2020）', 'profit_2020']
+  ]), class: 'form-control mr-sm-2' %>
+  <%= f.text_field :value1, class: 'form-control mr-sm-2', placeholder: 'Value 1' %>
+
+  <%= f.select :field2, options_for_select([
+    ['企業コード', 'company_code'],
+    ['上場状況', 'listing_status'],
+    ['企業名', 'company_name'],
+    ['企業名（カナ）', 'company_name_kana'],
+    ['郵便番号', 'mail_address'],
+    ['所在地', 'address'],
+    ['代表者名', 'representative'],
+    ['代表者名（カナ）', 'representative_kana'],
+    ['電話番号', 'phone_nubmer'],
+    ['売上（2022）', 'earnings_2022'],
+    ['利益（2022）', 'profit_2022'],
+    ['売上（2021）', 'earnings_2021'],
+    ['利益（2021）', 'profit_2021'],
+    ['売上（2020）', 'earnings_2020'],
+    ['利益（2020）', 'profit_2020']
+  ]), class: 'form-control mr-sm-2' %>
+  <%= f.text_field :value2, class: 'form-control mr-sm-2', placeholder: 'Value 2' %>
+
+  <%= f.submit 'Search', class: 'btn btn-outline-success my-2 my-sm-0' %>
+<% end %>
+
+
+       <% end %>
+    </nav>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>
+

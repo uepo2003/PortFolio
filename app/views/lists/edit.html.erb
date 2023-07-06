@@ -1,0 +1,98 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= @company.company_name %> - 編集</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="card">
+      <div class="card-header">
+        <h1 class="h3"><%= @company.company_name %> - 編集</h1>
+      </div>
+      <div class="card-body">
+        <%= form_with model: @company,url:"/lists/#{@company.id}", method: :patch do |f| %>
+          <div class="form-group">
+            <%= f.label :company_code, "企業コード" %>
+            <%= f.text_field :company_code, class: "form-control" %>
+          </div>
+          <!-- Add other form fields similarly -->
+          <div class="form-group">
+            <%= f.label :listing_status, "上場ステータス" %>
+            <%= f.text_field :listing_status, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :company_name, "企業名" %>
+            <%= f.text_field :company_name, class: "form-control" %>
+          </div>
+          <div class="form-group">
+             <%= f.label :company_name_kana, "企業名（カナ）" %>
+             <%= f.text_field :company_name_kana, class: "form-control" %>
+          </div>
+          <div class="form-group">
+             <%= f.label :mail_address, "メールアドレス" %>
+             <%= f.text_field :mail_address, class: "form-control" %>
+          </div>
+          <div class="form-group">
+             <%= f.label :address, "住所" %>
+             <%= f.text_field :address, class: "form-control" %>
+          </div>
+          <div class="form-group">
+             <%= f.label :representative, "代表者" %>
+             <%= f.text_field :representative, class: "form-control" %>
+           </div>
+           <div class="form-group">
+             <%= f.label :representative_kana, "代表者（カナ）" %>
+             <%= f.text_field :representative_kana, class: "form-control" %>
+           </div>
+           <div class="form-group">
+             <%= f.label :phone_nmbuer, "電話番号" %>
+             <%= f.text_field :phone_nubmer, class: "form-control" %>
+           </div>
+           <div class="form-group">
+             <%= f.label :earnings_2022, "収益2022" %>
+             <%= f.text_field :earnings_2022, class: "form-control" %>
+           </div>
+           <div class="form-group">
+             <%= f.label :profit_2022, "利益2022" %>
+             <%= f.text_field :profit_2022, class: "form-control" %>
+           </div>
+           <div class="form-group">
+             <%= f.label :earnings_2021, "収益2021" %>
+             <%= f.text_field :earnings_2021, class: "form-control" %>
+            </div>
+            <div class="form-group">
+             <%= f.label :profit_2021, "利益2021" %>
+             <%= f.text_field :profit_2021, class: "form-control" %>
+            </div>
+            <div class="form-group">
+             <%= f.label :earnings_2020, "収益2020" %>
+             <%= f.text_field :earnings_2020, class: "form-control" %>
+            </div>
+            <div class="form-group">
+             <%= f.label :profit_2020, "利益2020" %>
+             <%= f.text_field :profit_2020, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+             <%= f.submit "更新", class: "btn btn-primary" %>
+            </div>
+            <div class="form-group">
+             <%= link_to "詳細画面へ戻る", "/lists/#{@company.id}", class: 'btn btn-secondary'%>
+            </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= @company.company_name %></title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div>
+  <%= flash[:notice] %>
+</div>
+  <div class="container mt-5">
+    <div class="card">
+      <div class="card-header">
+        <h1 class="h3"><%= @company.company_name %></h1>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">企業コード: <%= @company.company_code %></li>
+        <li class="list-group-item">上場状況: <%= @company.listing_status %></li>
+        <li class="list-group-item">企業名: <%= @company.company_name %></li>
+        <li class="list-group-item">企業名（カナ）: <%= @company.company_name_kana %></li>
+        <li class="list-group-item">郵便番号: <%= @company.mail_address %></li>
+        <li class="list-group-item">所在地: <%= @company.address %></li>
+        <li class="list-group-item">代表者名: <%= @company.representative %></li>
+        <li class="list-group-item">代表者名（カナ）: <%= @company.representative_kana %></li>
+        <li class="list-group-item">電話番号: <%= @company.phone_nubmer %></li>
+        <li class="list-group-item">売上（2022）: <%= @company.earnings_2022 %></li>
+        <li class="list-group-item">利益（2022）: <%= @company.profit_2022 %></li>
+        <li class="list-group-item">売上（2021）: <%= @company.earnings_2021 %></li>
+        <li class="list-group-item">利益（2021）: <%= @company.profit_2021 %></li>
+        <li class="list-group-item">売上（2020）: <%= @company.earnings_2020 %></li>
+        <li class="list-group-item">利益（2020）: <%= @company.profit_2020 %></li>
+        <li class="list-group-item">
+          <%= link_to "編集", edit_list_path(@company), class: 'btn btn-primary' %>
+        </li>
+        <li class="list-group-item">
+          <%= link_to "戻る", lists_path, class: 'btn btn-secondary' %>
+        </li>
+  　　　
+      </ul>
+    </div>
+  </div>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

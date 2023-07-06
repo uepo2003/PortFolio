@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Company List</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <style>
+    body {
+      background: url('<%= asset_path 'text.jpg' %>') no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+  </style>
+</head>
+
+<body>
+ <body>
+  <div class="container mt-4">
+    <% flash.each do |type, message| %>
+      <div class="alert alert-<%= type %> alert-dismissible fade show" role="alert">
+        <%= message %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% end %>
+
+  <div class="container mt-5">
+    <div class="row">
+      <% @companies.each do |company| %>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-header text-muted">
+              <!-- Put some info here if you want -->
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">
+                <%= link_to company.company_name, "/lists/#{company.id}", class: 'text-decoration-none text-dark' %>
+              </h5>
+              <!-- Inserting the image here -->
+              <%= image_tag("ga.jpg", alt: "Company Logo", class: "img-fluid") %>
+            </div>
+            <div class="card-footer bg-transparent">
+              <%= link_to 'Delete', "/lists/#{company.id}", method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="mt-5">
+  <%= paginate @companies, class: 'pagination justify-content-center mb-4' %>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<div class="row">
+  <% @results.each do |company| %>
+    <div class="col-lg-6 col-md-12 mb-4">
+      <div class="card h-100">
+        <div class="card-header bg-primary text-white">
+          <h5 class="card-title mb-0"><%= company.company_name %></h5>
+          <p class="mb-0 small"><%= company.company_name_kana %></p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <strong>企業コード:</strong> <%= company.company_code %>
+          </li>
+          <li class="list-group-item">
+            <strong>上場状況:</strong> <%= company.listing_status %>
+          </li>
+          <li class="list-group-item">
+            <strong>郵便番号:</strong> <%= company.mail_address %>
+          </li>
+          <li class="list-group-item">
+            <strong>所在地:</strong> <%= company.address %>
+          </li>
+          <li class="list-group-item">
+            <strong>代表者名:</strong> <%= company.representative %>
+          </li>
+          <li class="list-group-item">
+            <strong>代表者名（カナ）:</strong> <%= company.representative_kana %>
+          </li>
+          <li class="list-group-item">
+            <strong>電話番号:</strong> <%= company.phone_nubmer %>
+          </li>
+        </ul>
+        <div class="card-body">
+          <div class="row text-center">
+            <div class="col">
+              <h6 class="text-muted">売上</h6>
+              <p class="mb-0"><strong>2022:</strong> <%= company.earnings_2022 %></p>
+              <p class="mb-0"><strong>2021:</strong> <%= company.earnings_2021 %></p>
+              <p class="mb-0"><strong>2020:</strong> <%= company.earnings_2020 %></p>
+            </div>
+            <div class="col">
+              <h6 class="text-muted">利益</h6>
+              <p class="mb-0"><strong>2022:</strong> <%= company.profit_2022 %></p>
+              <p class="mb-0"><strong>2021:</strong> <%= company.profit_2021 %></p>
+              <p class="mb-0"><strong>2020:</strong> <%= company.profit_2020 %></p>
+            </div>
+          </div>
+        </div>
+       <div class="card-footer"> 
+        <div class="text-right">
+         <%= link_to "詳細画面", "/lists/#{company.id}", class: 'btn btn-secondary mr-2' %>
+         <%= link_to "ホームへ戻る", lists_path, class: 'btn btn-secondary' %>
+        </div>
+       </div>
+
+      </div>
+    </div>
+  <% end %>
+
+</div>
+
